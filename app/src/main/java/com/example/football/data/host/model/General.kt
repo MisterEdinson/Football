@@ -2,7 +2,7 @@ package com.example.football.data.host.model
 
 import com.google.gson.annotations.SerializedName
 
-data class Response(
+data class General(
 
 	@field:SerializedName("count")
 	val count: Int? = null,
