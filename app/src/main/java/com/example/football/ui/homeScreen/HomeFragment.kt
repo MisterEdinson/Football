@@ -5,12 +5,16 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.LinearLayout
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.football.databinding.FragmentHomeBinding
 import com.example.football.utils.Resource
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.android.synthetic.main.fragment_home.*
 
 @AndroidEntryPoint
 class HomeFragment : Fragment() {
@@ -18,6 +22,7 @@ class HomeFragment : Fragment() {
     private val _binding get() = binding!!
 
     private val viewModel by viewModels<HomeViewModel>()
+    private var ligsAdapter : LigsAdapter? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -29,11 +34,12 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.competitionLiveData.observe(viewLifecycleOwner, Observer {
+        initAdapter()
+        viewModel.ligsLiveData.observe(viewLifecycleOwner, Observer {
             when (it) {
                 is Resource.Success -> {
                     it.data.let {
-                        Log.d("--------------------------------", "-------${it?.count}-----------")
+                        ligsAdapter?.differ?.submitList(it?.competitions)
                     }
                 }
                 is Resource.Loading -> {
@@ -48,5 +54,12 @@ class HomeFragment : Fragment() {
                 }
             }
         })
+    }
+
+    private fun initAdapter() {
+        ligsAdapter = LigsAdapter()
+        imgLigs.apply {
+            adapter = ligsAdapter
+        }
     }
 }

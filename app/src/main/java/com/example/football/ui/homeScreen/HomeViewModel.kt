@@ -12,7 +12,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class HomeViewModel @Inject constructor(private val repository: Repository) : ViewModel() {
-    val competitionLiveData: MutableLiveData<Resource<General>> = MutableLiveData()
+    val ligsLiveData: MutableLiveData<Resource<General>> = MutableLiveData()
 
     init {
         getCompetitions()
@@ -20,14 +20,14 @@ class HomeViewModel @Inject constructor(private val repository: Repository) : Vi
 
     private fun getCompetitions() =
         viewModelScope.launch {
-            competitionLiveData.postValue(Resource.Loading())
+            ligsLiveData.postValue(Resource.Loading())
             val responce = repository.getCompetition()
             if (responce.isSuccessful) {
                 responce.body().let {
-                    competitionLiveData.postValue(Resource.Success(it))
+                    ligsLiveData.postValue(Resource.Success(it))
                 }
             } else {
-                competitionLiveData.postValue(Resource.Error(responce.message()))
+                ligsLiveData.postValue(Resource.Error(responce.message()))
             }
         }
 
