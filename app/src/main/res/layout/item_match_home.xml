@@ -3,71 +3,76 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:paddingTop="8dp"
+    android:paddingBottom="8dp"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
     <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:id="@+id/homeGame"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:layout_constraintBottom_toBottomOf="@+id/linearLayout3"
         app:layout_constraintEnd_toStartOf="@+id/linearLayout3"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/linearLayout3"
         app:srcCompat="@drawable/chelsea_fc" />
 
     <ImageView
-        android:id="@+id/imageView7"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:id="@+id/awayGame"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:layout_constraintBottom_toBottomOf="@+id/linearLayout3"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/linearLayout3"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/chelsea_fc" />
 
-    <LinearLayout
+    <TableLayout
         android:id="@+id/linearLayout3"
         android:layout_width="0dp"
-        android:layout_height="40dp"
-        android:background="#01084E"
+        android:layout_height="wrap_content"
+        android:background="#C901084E"
         android:gravity="center"
+        android:padding="8dp"
         android:orientation="horizontal"
-        app:layout_constraintEnd_toStartOf="@+id/imageView7"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/imageView3"
+        app:layout_constraintEnd_toStartOf="@+id/awayGame"
+        app:layout_constraintStart_toEndOf="@+id/homeGame"
         app:layout_constraintTop_toTopOf="parent">
+            <TableRow>
+                <TextView
+                    android:id="@+id/tvHomer"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="start"
+                    android:textSize="12sp"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    tools:text="Liverpool FC" />
 
-        <TextView
-            android:id="@+id/textView6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="end"
-            android:text="Liverpool FC"
-            android:textColor="@color/white"
-            android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/tvResult"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="2-0"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/textView8"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="2-0"
-            android:textColor="@color/white"
-            android:textSize="18sp"
-            android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/tvAwey"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="end"
+                    android:textSize="12sp"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    tools:text="Manchester UN" />
+            </TableRow>
 
-        <TextView
-            android:id="@+id/textView9"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="start"
-            android:text="Manchester UN"
-            android:textColor="@color/white"
-            android:textStyle="bold" />
-    </LinearLayout>
+
+    </TableLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

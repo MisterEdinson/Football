@@ -1,9 +1,13 @@
 package com.example.football.ui.homeScreen
 
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.Toast
+import androidx.core.os.bundleOf
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
@@ -46,7 +50,15 @@ class LigsAdapter : RecyclerView.Adapter<LigsAdapter.LigsViewHolder>() {
         val item = differ.currentList[position]
 
         holder.itemView.apply {
-            item.emblem?.let { imgItemLig.loadImage(it) }
+            item.emblem?.let {
+                imgItemLig.loadImage(it)
+            }
+            imgItemLig.setOnClickListener {
+                val bundle = bundleOf("ligue" to item.code)
+                findNavController().navigate(R.id.action_homeFragment_to_ligsFragment, bundle)
+
+            }
+
         }
     }
 
@@ -63,12 +75,11 @@ class LigsAdapter : RecyclerView.Adapter<LigsAdapter.LigsViewHolder>() {
         val request = ImageRequest.Builder(this.context)
             .crossfade(true)
             .crossfade(500)
-            .placeholder(R.drawable.fifa)
+            .placeholder(R.drawable.fifa2)
             .error(R.drawable.error)
             .data(url)
             .target(this)
             .build()
-
         imageLoader.enqueue(request)
     }
 }

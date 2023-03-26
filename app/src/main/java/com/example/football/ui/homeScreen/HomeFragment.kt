@@ -23,6 +23,7 @@ class HomeFragment : Fragment() {
 
     private val viewModel by viewModels<HomeViewModel>()
     private var ligsAdapter : LigsAdapter? = null
+    private var matchAdapter : MatchesAdapter? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -35,6 +36,7 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initAdapter()
+        initAdapterMatch()
         viewModel.ligsLiveData.observe(viewLifecycleOwner, Observer {
             when (it) {
                 is Resource.Success -> {
@@ -44,7 +46,26 @@ class HomeFragment : Fragment() {
                 }
                 is Resource.Loading -> {
                     it.data.let {
-                        Log.d("--------------------------------", "-------Loading-----------")
+                        Log.d("----------------Ligs----------------", "-------Loading-----------")
+                    }
+                }
+                is Resource.Error -> {
+                    it.data.let {
+                        Log.e("check data", "Home fragment: error : $it")
+                    }
+                }
+            }
+        })
+        viewModel.matchLiveData.observe(viewLifecycleOwner, Observer {
+            when (it) {
+                is Resource.Success -> {
+                    it.data.let {
+                        matchAdapter?.differ?.submitList(it?.matches)
+                    }
+                }
+                is Resource.Loading -> {
+                    it.data.let {
+                        Log.d("-----------------Match Home---------------", "-------Loading-----------")
                     }
                 }
                 is Resource.Error -> {
@@ -60,6 +81,12 @@ class HomeFragment : Fragment() {
         ligsAdapter = LigsAdapter()
         imgLigs.apply {
             adapter = ligsAdapter
+        }
+    }
+    private fun initAdapterMatch() {
+        matchAdapter = MatchesAdapter()
+        matchDay.apply {
+            adapter = matchAdapter
         }
     }
 }

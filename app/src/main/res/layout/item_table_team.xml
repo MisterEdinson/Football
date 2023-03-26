@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:paddingTop="2dp"
+    android:paddingBottom="2dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/tvTableNumber"
+        android:layout_width="24dp"
+        android:textColor="@color/black"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/imgTableLable"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="100" />
+
+    <ImageView
+        android:id="@+id/imgTableLable"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="8dp"
+        app:layout_constraintStart_toEndOf="@+id/tvTableNumber"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/chelsea_fc" />
+
+    <TextView
+        android:id="@+id/tvTableName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="@+id/imgTableLable"
+        app:layout_constraintStart_toEndOf="@+id/imgTableLable"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Manchester United" />
+
+    <TextView
+        android:id="@+id/tvTableGame"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="@+id/tvTableName"
+        app:layout_constraintEnd_toStartOf="@+id/tvTableResult"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="21" />
+
+    <TextView
+        android:id="@+id/tvTableResult"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="@+id/tvTableGame"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tvTableGame"
+        tools:text="12" />
+</androidx.constraintlayout.widget.ConstraintLayout>
