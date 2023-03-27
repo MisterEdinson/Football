@@ -1,9 +1,12 @@
 package com.example.football.ui.ligue
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import androidx.core.os.bundleOf
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
@@ -52,6 +55,11 @@ class TableLigueAdapter : RecyclerView.Adapter<TableLigueAdapter.TableViewHolder
             }
             tvTableGame.text = item.playedGames.toString()
             tvTableResult.text = item.points.toString()
+            tvTableName.setOnClickListener {
+                Log.d("----------team--- write","-------${item.team?.id}---------")
+                val bundle = bundleOf("idTeam" to item.team?.id.toString())
+                findNavController().navigate(R.id.action_ligsFragment_to_teamFragment,bundle)
+            }
         }
     }
 

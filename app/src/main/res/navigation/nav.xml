@@ -24,5 +24,13 @@
         <argument
             android:name="ligue"
             app:argType="string" />
+        <action
+            android:id="@+id/action_ligsFragment_to_teamFragment"
+            app:destination="@id/teamFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/teamFragment"
+        android:name="com.example.football.ui.team.TeamFragment"
+        android:label="fragment_team"
+        tools:layout="@layout/fragment_team" />
 </navigation>

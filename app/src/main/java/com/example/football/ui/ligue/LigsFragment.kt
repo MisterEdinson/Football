@@ -39,8 +39,7 @@ class LigsFragment : Fragment() {
                     it.data.let {
                         context?.let { it1 -> Glide.with(it1).load(it?.competition?.emblem).into(imgLigueLogo) }
                         tvAreaName.text = it?.area?.name
-                        tvCompetitionType.text = it?.competition?.type
-                        tvCompetitonName.text = it?.competition?.name
+                        tvCompetitionType.text = it?.competition?.name
                         tvCurrencyDay.text = it?.season?.currentMatchday.toString()
                         it?.standings.let {
                             tableAdapter?.differ?.submitList(it?.get(0)?.table)

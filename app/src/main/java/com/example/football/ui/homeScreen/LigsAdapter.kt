@@ -20,6 +20,10 @@ import kotlinx.android.synthetic.main.item_lig_home.view.*
 
 
 class LigsAdapter : RecyclerView.Adapter<LigsAdapter.LigsViewHolder>() {
+
+    private val TYPE_SKIPPED_ITEM = 0
+    private val TYPE_NORMAL_ITEM = 1
+
     class LigsViewHolder(view: View) : RecyclerView.ViewHolder(view)
 
     private val callback = object : DiffUtil.ItemCallback<CompetitionsItem>() {
@@ -37,18 +41,33 @@ class LigsAdapter : RecyclerView.Adapter<LigsAdapter.LigsViewHolder>() {
             return oldItem == newItem
         }
     }
-
+    override fun getItemViewType(position: Int): Int {
+        return if (position == 0) {
+            TYPE_SKIPPED_ITEM
+        } else {
+            TYPE_NORMAL_ITEM
+        }
+    }
     val differ = AsyncListDiffer(this, callback)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LigsViewHolder {
-        val view =
-            LayoutInflater.from(parent.context).inflate(R.layout.item_lig_home, parent, false)
-        return LigsViewHolder(view)
+        return when (viewType) {
+            TYPE_SKIPPED_ITEM -> {
+                LigsViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_lig_home, parent, false))
+            }
+            TYPE_NORMAL_ITEM -> {
+                LigsViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_lig_home, parent, false))
+            }
+            else -> throw IllegalArgumentException("Invalid view type")
+        }
     }
 
     override fun onBindViewHolder(holder: LigsViewHolder, position: Int) {
         val item = differ.currentList[position]
-
+        if (item.type == "CUP") {
+            // не выполняйте никаких действий для пропущенного элемента
+            return
+        }
         holder.itemView.apply {
             item.emblem?.let {
                 imgItemLig.loadImage(it)
@@ -56,7 +75,6 @@ class LigsAdapter : RecyclerView.Adapter<LigsAdapter.LigsViewHolder>() {
             imgItemLig.setOnClickListener {
                 val bundle = bundleOf("ligue" to item.code)
                 findNavController().navigate(R.id.action_homeFragment_to_ligsFragment, bundle)
-
             }
 
         }

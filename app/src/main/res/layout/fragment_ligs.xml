@@ -5,15 +5,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:background="@drawable/bg_england"
+    android:background="@drawable/bg2"
     tools:context=".ui.ligue.LigsFragment">
-
 
     <ImageView
         android:id="@+id/imgLigueLogo"
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:padding="8dp"
+        android:layout_margin="16dp"
+        android:background="@color/white"
         tools:src="@drawable/bundes_liga"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -22,8 +23,9 @@
         android:id="@+id/rvTable"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:background="#D2FFFFFF"
+        android:background="#CBFFFFFF"
         android:padding="16dp"
+        android:layout_marginTop="16dp"
         android:paddingBottom="20dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -40,28 +42,23 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:text="Netherlands"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        tools:text="Netherlands"
+        android:textColor="@color/white"
         app:layout_constraintStart_toEndOf="@+id/imgLigueLogo"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/tvCompetitonName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:text="Eredivisie"
-        app:layout_constraintBottom_toBottomOf="@+id/tvAreaName"
-        app:layout_constraintStart_toEndOf="@+id/tvAreaName"
-        app:layout_constraintTop_toTopOf="@+id/tvAreaName"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toTopOf="@+id/imgLigueLogo" />
 
     <TextView
         android:id="@+id/tvCompetitionType"
-        android:layout_width="60dp"
-        android:layout_height="18dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:text="LEAGUE"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        tools:text="LEAGUE"
         app:layout_constraintStart_toEndOf="@+id/imgLigueLogo"
         app:layout_constraintTop_toBottomOf="@+id/tvAreaName" />
 
@@ -71,7 +68,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:text="Игровой день: "
+        android:textSize="12sp"
+        android:text="ИГРОВОЙ ДЕНЬ: "
+        android:textColor="@color/white"
         app:layout_constraintStart_toEndOf="@+id/imgLigueLogo"
         app:layout_constraintTop_toBottomOf="@+id/tvCompetitionType" />
 
@@ -80,7 +79,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:text="27"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        tools:text="27"
         app:layout_constraintBottom_toBottomOf="@+id/textView5"
         app:layout_constraintStart_toEndOf="@+id/textView5"
         app:layout_constraintTop_toTopOf="@+id/textView5"

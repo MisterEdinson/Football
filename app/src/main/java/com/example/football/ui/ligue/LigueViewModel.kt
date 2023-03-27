@@ -13,10 +13,12 @@ import javax.inject.Inject
 @HiltViewModel
 class LigueViewModel @Inject constructor(private val repository: Repository) : ViewModel() {
 
+    private val ligue:String = ""
+
     val ligsTableLiveData: MutableLiveData<Resource<GeneralTable>> = MutableLiveData()
 
     init {
-        getTable("PL")
+        getTable(ligue)
     }
 
     fun getTable(ligue:String) =

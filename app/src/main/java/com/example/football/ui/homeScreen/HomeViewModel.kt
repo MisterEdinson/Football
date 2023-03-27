@@ -20,6 +20,7 @@ class HomeViewModel @Inject constructor(private val repository: Repository) : Vi
     init {
         getCompetitions()
         getMatches()
+        getMatch10Day()
     }
 
         private fun getCompetitions() =
@@ -46,7 +47,18 @@ class HomeViewModel @Inject constructor(private val repository: Repository) : Vi
                     matchLiveData.postValue(Resource.Error(responce.message()))
                 }
             }
-
+        private fun getMatch10Day() =
+            viewModelScope.launch {
+                matchLiveData.postValue(Resource.Loading())
+                val responce = repository.getMatch10Day()
+                if(responce.isSuccessful){
+                    responce.body().let {
+                        matchLiveData.postValue(Resource.Success(it))
+                    }
+                }else{
+                    matchLiveData.postValue(Resource.Error(responce.message()))
+                }
+            }
 
 }
 

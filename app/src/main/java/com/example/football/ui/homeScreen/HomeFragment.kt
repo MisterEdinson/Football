@@ -24,6 +24,7 @@ class HomeFragment : Fragment() {
     private val viewModel by viewModels<HomeViewModel>()
     private var ligsAdapter : LigsAdapter? = null
     private var matchAdapter : MatchesAdapter? = null
+    private var match10Adapter : Matches10Adapter? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -36,7 +37,6 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initAdapter()
-        initAdapterMatch()
         viewModel.ligsLiveData.observe(viewLifecycleOwner, Observer {
             when (it) {
                 is Resource.Success -> {
@@ -82,11 +82,14 @@ class HomeFragment : Fragment() {
         imgLigs.apply {
             adapter = ligsAdapter
         }
-    }
-    private fun initAdapterMatch() {
         matchAdapter = MatchesAdapter()
         matchDay.apply {
             adapter = matchAdapter
         }
+        match10Adapter = Matches10Adapter()
+        rvMatch10Day.apply {
+            adapter = match10Adapter
+        }
     }
+
 }

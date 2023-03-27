@@ -11,11 +11,11 @@
     <TextView
         android:id="@+id/tvTableNumber"
         android:layout_width="24dp"
-        android:textColor="@color/black"
         android:layout_height="wrap_content"
+        android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="@+id/imgTableLable"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imgTableLable"
         tools:text="100" />
 
     <ImageView
@@ -29,31 +29,38 @@
 
     <TextView
         android:id="@+id/tvTableName"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:textColor="@color/black"
-        app:layout_constraintBottom_toBottomOf="@+id/imgTableLable"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/tvTableNumber"
+        app:layout_constraintEnd_toStartOf="@+id/tvTableGame"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/imgTableLable"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tvTableNumber"
+        app:layout_constraintVertical_bias="0.538"
         tools:text="Manchester United" />
 
     <TextView
         android:id="@+id/tvTableGame"
-        android:layout_width="wrap_content"
+        android:layout_width="24dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
+        android:gravity="center"
         android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="@+id/tvTableName"
         app:layout_constraintEnd_toStartOf="@+id/tvTableResult"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tvTableName"
         tools:text="21" />
 
     <TextView
         android:id="@+id/tvTableResult"
-        android:layout_width="wrap_content"
+        android:layout_width="24dp"
+        android:gravity="center"
         android:layout_height="wrap_content"
         android:textColor="@color/black"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/tvTableGame"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/tvTableGame"

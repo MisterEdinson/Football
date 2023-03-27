@@ -98,21 +98,62 @@
 
     </androidx.recyclerview.widget.RecyclerView>
 
-    <androidx.recyclerview.widget.RecyclerView
+    <TextView
+        android:id="@+id/tvMatchesDay"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Сегодняшние матчи :"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:layout_marginTop="8dp"
+        android:padding="5dp"
+        android:gravity="center"
+        android:background="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgLigs" />
+
+    <TextView
+        android:id="@+id/tvMatches10Day"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:gravity="center"
+        android:padding="5dp"
+        android:text="Ближайшие матчи :"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/matchDay"
+        tools:layout_editor_absoluteY="649dp" />
+
+        <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/matchDay"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:padding="16dp"
+            tools:itemCount="3"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imgLigs"
-        app:layout_constraintVertical_bias="0.0"
-        tools:itemCount="3"
+        app:layout_constraintTop_toBottomOf="@+id/tvMatchesDay"
         tools:listitem="@layout/item_match_home" />
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvMatch10Day"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        tools:itemCount="3"
+        android:padding="16dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvMatches10Day"
+        tools:listitem="@layout/item_match_home" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
