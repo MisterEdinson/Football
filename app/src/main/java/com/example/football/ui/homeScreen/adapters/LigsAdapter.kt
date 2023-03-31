@@ -1,11 +1,9 @@
-package com.example.football.ui.homeScreen
+package com.example.football.ui.homeScreen.adapters
 
-import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.AsyncListDiffer
@@ -17,7 +15,6 @@ import coil.request.ImageRequest
 import com.example.football.R
 import com.example.football.data.host.model.CompetitionsItem
 import kotlinx.android.synthetic.main.item_lig_home.view.*
-
 
 class LigsAdapter : RecyclerView.Adapter<LigsAdapter.LigsViewHolder>() {
 
@@ -41,6 +38,7 @@ class LigsAdapter : RecyclerView.Adapter<LigsAdapter.LigsViewHolder>() {
             return oldItem == newItem
         }
     }
+
     override fun getItemViewType(position: Int): Int {
         return if (position == 0) {
             TYPE_SKIPPED_ITEM
@@ -48,15 +46,22 @@ class LigsAdapter : RecyclerView.Adapter<LigsAdapter.LigsViewHolder>() {
             TYPE_NORMAL_ITEM
         }
     }
+
     val differ = AsyncListDiffer(this, callback)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LigsViewHolder {
         return when (viewType) {
             TYPE_SKIPPED_ITEM -> {
-                LigsViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_lig_home, parent, false))
+                LigsViewHolder(
+                    LayoutInflater.from(parent.context)
+                        .inflate(R.layout.item_lig_home, parent, false)
+                )
             }
             TYPE_NORMAL_ITEM -> {
-                LigsViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_lig_home, parent, false))
+                LigsViewHolder(
+                    LayoutInflater.from(parent.context)
+                        .inflate(R.layout.item_lig_home, parent, false)
+                )
             }
             else -> throw IllegalArgumentException("Invalid view type")
         }
@@ -64,10 +69,6 @@ class LigsAdapter : RecyclerView.Adapter<LigsAdapter.LigsViewHolder>() {
 
     override fun onBindViewHolder(holder: LigsViewHolder, position: Int) {
         val item = differ.currentList[position]
-        if (item.type == "CUP") {
-            // не выполняйте никаких действий для пропущенного элемента
-            return
-        }
         holder.itemView.apply {
             item.emblem?.let {
                 imgItemLig.loadImage(it)

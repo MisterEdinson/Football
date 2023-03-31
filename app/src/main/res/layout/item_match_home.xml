@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:paddingTop="8dp"
-    android:paddingBottom="8dp"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:paddingTop="8dp"
+    android:paddingBottom="8dp">
 
     <ImageView
         android:id="@+id/homeGame"
@@ -34,43 +33,62 @@
         android:layout_height="wrap_content"
         android:background="#C901084E"
         android:gravity="center"
-        android:padding="8dp"
         android:orientation="horizontal"
+        android:padding="8dp"
         app:layout_constraintEnd_toStartOf="@+id/awayGame"
         app:layout_constraintStart_toEndOf="@+id/homeGame"
         app:layout_constraintTop_toTopOf="parent">
-            <TableRow>
-                <TextView
-                    android:id="@+id/tvHomer"
-                    android:layout_width="120dp"
-                    android:layout_height="wrap_content"
-                    android:gravity="start"
-                    android:textSize="12sp"
-                    android:textColor="@color/white"
-                    android:textStyle="bold"
-                    tools:text="Liverpool FC" />
+
+        <TableRow>
+
+            <TextView
+                android:id="@+id/tvHomer"
+                android:layout_width="115dp"
+                android:layout_height="wrap_content"
+                android:gravity="start"
+                android:paddingTop="4dp"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                tools:text="Liverpool FC" />
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/tvResult"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="2-0"
+                    android:text="Начало:"
                     android:textColor="@color/white"
-                    android:textSize="18sp"
+                    android:textSize="10sp"
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/tvAwey"
-                    android:layout_width="120dp"
+                    android:id="@+id/tvResultTime"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:gravity="end"
-                    android:textSize="12sp"
+                    android:text="22.02 16:30"
                     android:textColor="@color/white"
-                    android:textStyle="bold"
-                    tools:text="Manchester UN" />
-            </TableRow>
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <TextView
+                android:id="@+id/tvAwey"
+                android:layout_width="115dp"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                android:paddingTop="4dp"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                tools:text="Manchester UN" />
+        </TableRow>
 
 
     </TableLayout>

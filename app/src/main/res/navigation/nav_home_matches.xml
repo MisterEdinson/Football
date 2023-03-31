@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_home_matches"
+    app:startDestination="@id/toDayMatchesFragment">
+
+    <fragment
+        android:id="@+id/toDayMatchesFragment"
+        android:name="com.example.football.ui.homeScreen.homeMatches.ToDayMatchesFragment"
+        android:label="fragment_to_day_matches"
+        tools:layout="@layout/fragment_to_day_matches" >
+        <action
+            android:id="@+id/action_toDayMatchesFragment_to_immediateMatchesFragment"
+            app:destination="@id/immediateMatchesFragment"
+            app:enterAnim="@anim/anim_from_right_in"
+            app:exitAnim="@anim/anim_to_left_out"
+            app:popEnterAnim="@anim/anim_from_left_in"
+            app:popExitAnim="@anim/anim_to_right_out" />
+        <action
+            android:id="@+id/action_toDayMatchesFragment_to_teamFragment2"
+            app:destination="@id/teamFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/immediateMatchesFragment"
+        android:name="com.example.football.ui.homeScreen.homeMatches.ImmediateMatchesFragment"
+        android:label="fragment_immediate_matches"
+        tools:layout="@layout/fragment_immediate_matches" >
+        <action
+            android:id="@+id/action_immediateMatchesFragment_to_toDayMatchesFragment"
+            app:destination="@id/toDayMatchesFragment"
+            app:enterAnim="@anim/anim_from_right_in"
+            app:exitAnim="@anim/anim_to_left_out"
+            app:popEnterAnim="@anim/anim_from_left_in"
+            app:popExitAnim="@anim/anim_to_right_out" />
+        <action
+            android:id="@+id/action_immediateMatchesFragment_to_teamFragment2"
+            app:destination="@id/teamFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/teamFragment2"
+        android:name="com.example.football.ui.team.TeamFragment"
+        android:label="fragment_team"
+        tools:layout="@layout/fragment_team" >
+        <action
+            android:id="@+id/action_teamFragment2_to_toDayMatchesFragment"
+            app:destination="@id/toDayMatchesFragment" />
+        <action
+            android:id="@+id/action_teamFragment2_to_immediateMatchesFragment"
+            app:destination="@id/immediateMatchesFragment" />
+    </fragment>
+</navigation>

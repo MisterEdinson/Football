@@ -10,39 +10,39 @@
         android:id="@+id/tvPlayerPosition"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:text="Goalkeeper"
-        android:textColor="@color/white"
         android:paddingEnd="8dp"
+        android:textColor="@color/white"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Goalkeeper" />
 
     <TextView
         android:id="@+id/tvPlayerName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:textStyle="bold"
-        tools:text="Thibaut Courtois"
         android:textColor="@color/white"
+        android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/tvPlayerCountry"
         app:layout_constraintStart_toEndOf="@+id/tvPlayerPosition"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Thibaut Courtois" />
 
     <TextView
         android:id="@+id/tvPlayerCountry"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:text="Belgium"
         android:paddingEnd="8dp"
         android:textColor="@color/white"
         app:layout_constraintEnd_toStartOf="@+id/tvPlayerYears"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Belgium" />
 
     <TextView
         android:id="@+id/tvPlayerYears"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:text="1992-05-11"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="1992-05-11" />
 </androidx.constraintlayout.widget.ConstraintLayout>

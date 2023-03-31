@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@drawable/bg_team2"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bg_team2"
     tools:context=".ui.team.TeamFragment">
 
 
@@ -15,19 +14,22 @@
         android:layout_height="100dp"
         android:layout_marginStart="40dp"
         android:layout_marginTop="48dp"
-        tools:src="@drawable/chelsea_fc"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@drawable/chelsea_fc" />
 
     <TextView
         android:id="@+id/tvTeamCount"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
         android:layout_marginTop="32dp"
-        android:padding="4dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/style_text_border_white"
         android:gravity="center"
-        android:textColor="@color/white"
+        android:padding="4dp"
         android:text="Команда"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toStartOf="@+id/textView3"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -37,10 +39,13 @@
         android:id="@+id/textView3"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:padding="4dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="32dp"
+        android:background="@drawable/style_text_border_blue"
         android:gravity="center"
-        android:textColor="@color/white"
+        android:padding="4dp"
         android:text="Матчи"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="@+id/tvTeamCount"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -51,16 +56,16 @@
         android:id="@+id/rvTeamPlayers"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_marginTop="16dp"
         android:paddingStart="28dp"
         android:paddingEnd="28dp"
         android:paddingBottom="28dp"
-        android:layout_marginTop="16dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:listitem="@layout/item_team_player"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvTeamCount" />
+        app:layout_constraintTop_toBottomOf="@+id/tvTeamCount"
+        tools:listitem="@layout/item_team_player" />
 
     <TextView
         android:id="@+id/textView4"
@@ -69,8 +74,8 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:text="Страна"
-        android:textStyle="bold"
         android:textColor="@color/white"
+        android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/imgTeamLogo"
         app:layout_constraintTop_toBottomOf="@+id/tvNameTeam" />
 
@@ -81,7 +86,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="40dp"
         android:textColor="@color/white"
-        android:textSize="22sp"
+        android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/imgTeamLogo"
         app:layout_constraintTop_toTopOf="parent"
@@ -92,11 +97,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        tools:text="1902"
         android:textColor="@color/white"
+        android:textSize="10sp"
         app:layout_constraintBottom_toBottomOf="@+id/tvNameTeam"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.057"
         app:layout_constraintStart_toEndOf="@+id/tvNameTeam"
-        app:layout_constraintTop_toTopOf="@+id/tvNameTeam" />
+        app:layout_constraintTop_toTopOf="@+id/tvNameTeam"
+        tools:text="1902" />
 
     <TextView
         android:id="@+id/textView8"
@@ -105,8 +113,8 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:text="Стадион"
-        android:textStyle="bold"
         android:textColor="@color/white"
+        android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/imgTeamLogo"
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
@@ -117,8 +125,8 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:text="Тренер"
-        android:textStyle="bold"
         android:textColor="@color/white"
+        android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/imgTeamLogo"
         app:layout_constraintTop_toBottomOf="@+id/textView8" />
 
@@ -126,31 +134,38 @@
         android:id="@+id/tvCouchTeam"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        tools:text="Carlo Ancelotti"
+        android:layout_marginStart="8dp"
         android:textColor="@color/white"
+        android:textSize="12sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/textView9"
         app:layout_constraintStart_toEndOf="@+id/textView9"
-        app:layout_constraintTop_toTopOf="@+id/textView9" />
+        app:layout_constraintTop_toTopOf="@+id/textView9"
+        tools:text="Carlo Ancelotti" />
 
     <TextView
         android:id="@+id/tvStadiumTeam"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        tools:text="Estadio Santiago Bernabéu"
+        android:layout_marginStart="8dp"
         android:textColor="@color/white"
+        android:textSize="12sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/textView8"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textView8"
-        app:layout_constraintTop_toTopOf="@+id/textView8" />
+        app:layout_constraintTop_toTopOf="@+id/textView8"
+        tools:text="Estadio Santiago Bernabéu" />
 
     <TextView
         android:id="@+id/tvCountryTeam"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="8dp"
         android:text="TextView"
         android:textColor="@color/white"
+        android:textSize="12sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/textView4"
         app:layout_constraintStart_toEndOf="@+id/textView4"
         app:layout_constraintTop_toTopOf="@+id/textView4" />
@@ -160,9 +175,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
-        tools:text="(Italy)"
         android:textColor="@color/white"
+        android:textSize="10sp"
         app:layout_constraintBottom_toBottomOf="@+id/tvCouchTeam"
         app:layout_constraintStart_toEndOf="@+id/tvCouchTeam"
-        app:layout_constraintTop_toTopOf="@+id/tvCouchTeam" />
+        app:layout_constraintTop_toTopOf="@+id/tvCouchTeam"
+        tools:text="(Italy)" />
 </androidx.constraintlayout.widget.ConstraintLayout>

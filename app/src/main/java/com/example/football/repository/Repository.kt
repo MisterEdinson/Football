@@ -14,18 +14,23 @@ class Repository @Inject constructor(
     suspend fun getCompetition(): Response<General> {
         return simpleApi.getCompetition()
     }
+
     suspend fun getMatchDay(): Response<General_matches> {
         return simpleApi.getMatchDay()
     }
+
     suspend fun getLigueMatch(): Response<General_matches> {
         return simpleApi.getLigueMatches()
     }
+
     suspend fun getLigueTable(ligue: String): Response<GeneralTable> {
         return simpleApi.getLigueTable(ligue)
     }
-    suspend fun getMatch10Day(): Response<General_matches> {
-        return simpleApi.getMatch10Day()
+
+    suspend fun getMatch10Day(dataTo: String, dataFrom: String): Response<General_matches> {
+        return simpleApi.getMatch10Day(dataTo, dataFrom)
     }
+
     suspend fun getTeam(id: String): Response<TeamGeneral> {
         return simpleApi.getTeam(id)
     }

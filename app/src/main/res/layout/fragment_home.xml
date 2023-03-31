@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/england_pl"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.homeScreen.HomeFragment">
 
     <ImageView
@@ -30,54 +29,37 @@
 
     <LinearLayout
         android:id="@+id/linearLayout"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="45dp"
         android:layout_marginTop="8dp"
         android:gravity="center_horizontal"
         android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView2">
 
-        <androidx.cardview.widget.CardView
+
+        <TextView
+            android:id="@+id/textView2"
             android:layout_width="150dp"
             android:layout_height="match_parent"
             android:layout_marginEnd="8dp"
-            app:cardCornerRadius="10dp">
+            android:background="@drawable/style_text_border_bg_white"
+            android:gravity="center"
+            android:text="Life"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/textView2"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:textColor="@color/black"
-                android:textStyle="bold"
-                android:text="Life" />
 
-            <androidx.cardview.widget.CardView
-                android:layout_width="10dp"
-                android:layout_height="10dp"
-                android:layout_gravity="right|center"
-                android:backgroundTint="@color/green"
-                android:layout_marginTop="1dp"
-                android:layout_marginEnd="45dp"
-                app:cardCornerRadius="10dp" />
-        </androidx.cardview.widget.CardView>
-
-        <androidx.cardview.widget.CardView
+        <TextView
+            android:id="@+id/textView22"
             android:layout_width="150dp"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_marginStart="8dp"
+            android:background="@drawable/style_text_border_bg_blue"
+            android:gravity="center"
+            android:text="Расписание"
+            android:textColor="@color/white" />
 
-            <TextView
-                android:background="#0F0D71"
-                android:id="@+id/textView22"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:textColor="@color/white"
-                android:text="Расписание" />
-        </androidx.cardview.widget.CardView>
 
     </LinearLayout>
 
@@ -98,62 +80,18 @@
 
     </androidx.recyclerview.widget.RecyclerView>
 
-    <TextView
-        android:id="@+id/tvMatchesDay"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="Сегодняшние матчи :"
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        android:layout_marginTop="8dp"
-        android:padding="5dp"
-        android:gravity="center"
-        android:background="@color/white"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imgLigs" />
-
-    <TextView
-        android:id="@+id/tvMatches10Day"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:background="@color/white"
-        android:gravity="center"
-        android:padding="5dp"
-        android:text="Ближайшие матчи :"
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/matchDay"
-        tools:layout_editor_absoluteY="649dp" />
-
-        <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/matchDay"
+    <fragment
+        android:id="@+id/matchesFragmentHomeFragment"
+        android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:padding="16dp"
-            tools:itemCount="3"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvMatchesDay"
-        tools:listitem="@layout/item_match_home" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvMatch10Day"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        tools:itemCount="3"
-        android:padding="16dp"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        android:layout_marginTop="16dp"
+        android:paddingBottom="20dp"
+        app:defaultNavHost="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvMatches10Day"
-        tools:listitem="@layout/item_match_home" />
-
+        app:layout_constraintTop_toBottomOf="@+id/imgLigs"
+        app:navGraph="@navigation/nav_home_matches" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
