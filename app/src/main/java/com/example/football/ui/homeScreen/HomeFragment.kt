@@ -33,6 +33,7 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initAdapter()
+
         viewModel.ligsLiveData.observe(viewLifecycleOwner) { it ->
             when (it) {
                 is Resource.Success -> {
@@ -59,5 +60,10 @@ class HomeFragment : Fragment() {
         imgLigs.apply {
             adapter = ligsAdapter
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        binding = null
     }
 }

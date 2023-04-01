@@ -37,6 +37,7 @@ class Repository @Inject constructor(
     suspend fun getTeam(id: String): Response<TeamGeneral> {
         return simpleApi.getTeam(id)
     }
+
     //    -------------------------ROOM-----------------------------     //
 
     suspend fun insertGameLig(footballGameEntity: FootballGameEntity){

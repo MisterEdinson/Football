@@ -59,8 +59,6 @@ class MatchesAdapter : RecyclerView.Adapter<MatchesAdapter.MatchViewHolder>() {
                 tvResult.text = "Live"
                 tvResultTime.text = "${item.score?.fullTime?.home}-${item.score?.fullTime?.away}"
             }
-
-
         }
     }
 

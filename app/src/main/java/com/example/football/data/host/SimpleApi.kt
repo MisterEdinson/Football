@@ -2,7 +2,6 @@ package com.example.football.data.host
 
 import com.example.football.data.host.matches.General_matches
 import com.example.football.data.host.model.General
-import com.example.football.data.host.news.NewsGeneral
 import com.example.football.data.host.table.GeneralTable
 import com.example.football.data.host.team.TeamGeneral
 import retrofit2.Response
@@ -45,11 +44,5 @@ interface SimpleApi {
         @Path("idTeam") id: String
     ): Response<TeamGeneral>
 
-    //Последние новости спорта
-    @GET(
-        "https://newsapi.org/v2/top-headlines?country=ru&apiKey=fafe7f309c354670bfb0afc5f5ce0204&category=sports&pageSize=10&q\n" +
-                "=футбол"
-    )
-    suspend fun getNews(): Response<NewsGeneral>
 }
 
