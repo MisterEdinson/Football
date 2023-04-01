@@ -5,11 +5,14 @@ import com.example.football.data.host.matches.General_matches
 import com.example.football.data.host.model.General
 import com.example.football.data.host.table.GeneralTable
 import com.example.football.data.host.team.TeamGeneral
+import com.example.football.data.room.FootballDao
+import com.example.football.data.room.models.FootballGameEntity
 import retrofit2.Response
 import javax.inject.Inject
 
 class Repository @Inject constructor(
-    private val simpleApi: SimpleApi
+    private val simpleApi: SimpleApi,
+    private val footballDao: FootballDao
 ) {
     suspend fun getCompetition(): Response<General> {
         return simpleApi.getCompetition()
@@ -33,5 +36,13 @@ class Repository @Inject constructor(
 
     suspend fun getTeam(id: String): Response<TeamGeneral> {
         return simpleApi.getTeam(id)
+    }
+    //    -------------------------ROOM-----------------------------     //
+
+    suspend fun insertGameLig(footballGameEntity: FootballGameEntity){
+        footballDao.insertGameLig(footballGameEntity)
+    }
+    fun getAllGameLig(){
+        footballDao.getAllGameLig()
     }
 }

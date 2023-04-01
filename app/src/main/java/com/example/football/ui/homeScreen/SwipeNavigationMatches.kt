@@ -18,24 +18,6 @@ open class SwipeNavigationMatches(context: Context) : OnTouchListener {
     private inner class GestureListener : GestureDetector.SimpleOnGestureListener() {
         private val SWIPE_THRESHOLD: Int = 100
         private val SWIPE_VELOCITY_THRESHOLD: Int = 100
-        override fun onDown(e: MotionEvent): Boolean {
-            return true
-        }
-
-        override fun onSingleTapUp(e: MotionEvent): Boolean {
-            onClick()
-            return super.onSingleTapUp(e)
-        }
-
-        override fun onDoubleTap(e: MotionEvent): Boolean {
-            onDoubleClick()
-            return super.onDoubleTap(e)
-        }
-
-        override fun onLongPress(e: MotionEvent) {
-            onLongClick()
-            super.onLongPress(e)
-        }
 
         override fun onFling(
             e1: MotionEvent,
@@ -80,9 +62,6 @@ open class SwipeNavigationMatches(context: Context) : OnTouchListener {
     open fun onSwipeLeft() {}
     open fun onSwipeUp() {}
     open fun onSwipeDown() {}
-    private fun onClick() {}
-    private fun onDoubleClick() {}
-    private fun onLongClick() {}
 
     init {
         gestureDetector = GestureDetector(context, GestureListener())

@@ -17,6 +17,7 @@ import com.example.football.data.host.matches.MatchesItem
 import kotlinx.android.synthetic.main.item_match_home.view.*
 import java.time.OffsetDateTime
 import java.time.format.DateTimeFormatter
+import java.util.*
 
 class Matches10Adapter:RecyclerView.Adapter<Matches10Adapter.MatchesViewHolder>() {
     class MatchesViewHolder(view: View):RecyclerView.ViewHolder(view)
@@ -52,7 +53,7 @@ class Matches10Adapter:RecyclerView.Adapter<Matches10Adapter.MatchesViewHolder>(
             tvAwey.text = item.awayTeam?.shortName
             item.awayTeam?.crest?.let { awayGame.loadImage(it) }
             if(item.status == "TIMED"){
-                val inputText = DateTimeFormatter.ofPattern("dd.MM HH:mm")
+                val inputText = DateTimeFormatter.ofPattern("dd.MM HH:mm", Locale.getDefault())
                 val date = item.utcDate
                 val dateTime = OffsetDateTime.parse(date)
                 val time = dateTime.format(inputText)
