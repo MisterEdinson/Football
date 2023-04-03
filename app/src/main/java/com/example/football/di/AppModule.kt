@@ -1,11 +1,16 @@
 package com.example.football.di
 
+import android.content.Context
+import androidx.room.Room
 import com.example.football.data.host.SimpleApi
+import com.example.football.data.room.FootballDB
+import com.example.football.data.room.dao.FootballLigsDao
 import com.example.football.utils.Constants
 import com.example.football.utils.Constants.Companion.BASE_URL
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -42,4 +47,18 @@ object AppModule {
             .client(okHttpClient())
             .build()
             .create(SimpleApi::class.java)
+
+    @Provides
+    @Singleton
+    fun provideArticleDataBase(@ApplicationContext context: Context) =
+        Room.databaseBuilder(
+            context,
+            FootballDB::class.java,
+            "football_database"
+        ).build()
+
+    @Provides
+    fun provideLeagueDao(appDataBase: FootballDB): FootballLigsDao {
+        return appDataBase.footballLigsDao()
+    }
 }

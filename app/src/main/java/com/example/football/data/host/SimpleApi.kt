@@ -1,6 +1,6 @@
 package com.example.football.data.host
 
-import com.example.football.data.host.matches.General_matches
+import com.example.football.data.host.matches.GeneralMatches
 import com.example.football.data.host.model.General
 import com.example.football.data.host.news.NewsGeneral
 import com.example.football.data.host.table.GeneralTable
@@ -17,14 +17,14 @@ interface SimpleApi {
 
     //все доступные сегодняшние матчи
     @GET("matches")
-    suspend fun getMatchDay(): Response<General_matches>
+    suspend fun getMatchDay(): Response<GeneralMatches>
 
     //предстоящие матчи до 10 дней вперед по выбранным лигам
     @GET("matches")
     suspend fun getMatch10Day(
         @Query("dateTo") dataTo: String,
         @Query("dateFrom") dataFrom: String
-    ): Response<General_matches>
+    ): Response<GeneralMatches>
 
     //все доступные предстоящие матчи RealMadrid
     @GET("teams/86/matches?status=SCHEDULED")
@@ -32,7 +32,7 @@ interface SimpleApi {
 
     //все доступные предстоящие матчи PremierLigue
     @GET("competitions/PL/matches?status=SCHEDULED&matchday=29")
-    suspend fun getLigueMatches(): Response<General_matches>
+    suspend fun getLigueMatches(): Response<GeneralMatches>
 
     //все доступные предстоящие матчи PremierLigue
     @GET("competitions/{ligue}/standings")
