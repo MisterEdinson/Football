@@ -14,26 +14,28 @@ import coil.decode.SvgDecoder
 import coil.request.ImageRequest
 import com.example.football.R
 import com.example.football.data.host.model.CompetitionsItem
+import com.example.football.data.room.models.FootballLigsEntity
 import kotlinx.android.synthetic.main.item_lig_home.view.*
 
-class LigsAdapter : RecyclerView.Adapter<LigsAdapter.LigsViewHolder>() {
+class LigsAdapter()
+    : RecyclerView.Adapter<LigsAdapter.LigsViewHolder>() {
 
     private val TYPE_SKIPPED_ITEM = 0
     private val TYPE_NORMAL_ITEM = 1
 
     class LigsViewHolder(view: View) : RecyclerView.ViewHolder(view)
 
-    private val callback = object : DiffUtil.ItemCallback<CompetitionsItem>() {
+    private val callback = object : DiffUtil.ItemCallback<FootballLigsEntity>() {
         override fun areItemsTheSame(
-            oldItem: CompetitionsItem,
-            newItem: CompetitionsItem
+            oldItem: FootballLigsEntity,
+            newItem: FootballLigsEntity
         ): Boolean {
-            return oldItem.code == newItem.code
+            return oldItem.idligue == newItem.idligue
         }
 
         override fun areContentsTheSame(
-            oldItem: CompetitionsItem,
-            newItem: CompetitionsItem
+            oldItem: FootballLigsEntity,
+            newItem: FootballLigsEntity
         ): Boolean {
             return oldItem == newItem
         }
@@ -77,7 +79,6 @@ class LigsAdapter : RecyclerView.Adapter<LigsAdapter.LigsViewHolder>() {
                 val bundle = bundleOf("ligue" to item.code)
                 findNavController().navigate(R.id.action_homeFragment_to_ligsFragment, bundle)
             }
-
         }
     }
 

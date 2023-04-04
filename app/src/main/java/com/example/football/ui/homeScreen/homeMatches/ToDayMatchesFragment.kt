@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.football.R
 import com.example.football.ui.homeScreen.HomeViewModel
@@ -20,13 +20,14 @@ import kotlinx.android.synthetic.main.fragment_to_day_matches.*
 @AndroidEntryPoint
 class ToDayMatchesFragment : Fragment() {
 
-    private val viewModel by viewModels<HomeViewModel>()
-    private var matchAdapter : MatchesAdapter? = null
+    private lateinit var viewModel: HomeViewModel
+    private var matchAdapter: MatchesAdapter? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        viewModel = ViewModelProvider(requireActivity()).get(HomeViewModel::class.java)
         return inflater.inflate(R.layout.fragment_to_day_matches, container, false)
     }
 
@@ -34,7 +35,7 @@ class ToDayMatchesFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         initAdapter()
 //      SWIPE
-        rvMatchDay.setOnTouchListener(object : SwipeNavigationMatches(view.context){
+        rvMatchDay.setOnTouchListener(object : SwipeNavigationMatches(view.context) {
 
             override fun onSwipeRight() {
 
@@ -79,6 +80,7 @@ class ToDayMatchesFragment : Fragment() {
             }
         }
     }
+
     private fun initAdapter() {
         matchAdapter = MatchesAdapter()
         rvMatchDay.apply {

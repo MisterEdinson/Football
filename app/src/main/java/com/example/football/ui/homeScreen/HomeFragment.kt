@@ -7,6 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
+import com.example.football.data.room.models.FootballLigsEntity
 import com.example.football.databinding.FragmentHomeBinding
 import com.example.football.ui.homeScreen.adapters.LigsAdapter
 import com.example.football.utils.Resource
@@ -18,8 +20,7 @@ class HomeFragment : Fragment() {
     private var binding: FragmentHomeBinding? = null
     private val _binding get() = binding!!
 
-    private val viewModel by viewModels<HomeViewModel>()
-
+    private lateinit var viewModel: HomeViewModel
     private var ligsAdapter: LigsAdapter? = null
 
     override fun onCreateView(
@@ -27,6 +28,7 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentHomeBinding.inflate(layoutInflater, container, false)
+        viewModel = ViewModelProvider(requireActivity()).get(HomeViewModel::class.java)
         return _binding.root
     }
 
@@ -35,28 +37,14 @@ class HomeFragment : Fragment() {
         initAdapter()
 
         viewModel.ligsLiveData.observe(viewLifecycleOwner) { it ->
-            when (it) {
-                is Resource.Success -> {
-                    it.data.let {
-                        ligsAdapter?.differ?.submitList(it?.competitions)
-                    }
-                }
-                is Resource.Loading -> {
-                    it.data.let {
-                    }
-                }
-                is Resource.Error -> {
-                    it.data.let {
-                        Log.e("check data", "Home fragment: error : $it")
-                    }
-                }
+            it.let {
+                ligsAdapter?.differ?.submitList(it)
             }
         }
-
     }
 
     private fun initAdapter() {
-        ligsAdapter = LigsAdapter()
+        ligsAdapter = LigsAdapter ()
         imgLigs.apply {
             adapter = ligsAdapter
         }

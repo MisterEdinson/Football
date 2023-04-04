@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.football.R
 import com.example.football.ui.homeScreen.HomeViewModel
@@ -20,13 +21,14 @@ import kotlinx.android.synthetic.main.fragment_immediate_matches.*
 @AndroidEntryPoint
 class ImmediateMatchesFragment : Fragment() {
 
-    private val viewModel by viewModels<HomeViewModel>()
+    private lateinit var viewModel : HomeViewModel
     private var match10Adapter : Matches10Adapter? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        viewModel = ViewModelProvider(requireActivity()).get(HomeViewModel::class.java)
         return inflater.inflate(R.layout.fragment_immediate_matches, container, false)
     }
 
