@@ -7,13 +7,10 @@ import com.example.football.data.room.models.FootballLigsEntity
 interface FootballLigsDao {
     @Query("SELECT * FROM football_competition ORDER BY idligue ASC")
     suspend fun getCompetitionLeague(): List<FootballLigsEntity>
-
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun addCompetitionLeague(competition: List<FootballLigsEntity>)
-
     @Delete
     suspend fun deleteCompetitionLeague(competition: FootballLigsEntity)
-
     @Query("DELETE FROM football_competition")
     suspend fun deleteAllCompetitionLeague()
 }

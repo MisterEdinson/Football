@@ -29,7 +29,7 @@ class Repository @Inject constructor(
     //1
     suspend fun getCompetition(): List<FootballLigsEntity> {
         //receiving data API and conversion
-        footballLeagueDao.deleteAllCompetitionLeague()
+        //footballLeagueDao.deleteAllCompetitionLeague()
         val competitionDao = footballLeagueDao.getCompetitionLeague()
         when(competitionDao.size){
             0->{
