@@ -40,7 +40,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun initAdapter() {
-        ligsAdapter = LigsAdapter ()
+        ligsAdapter = LigsAdapter()
         imgLigs.apply {
             adapter = ligsAdapter
         }

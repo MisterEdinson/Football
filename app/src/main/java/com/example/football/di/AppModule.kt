@@ -6,6 +6,7 @@ import com.example.football.data.host.SimpleApi
 import com.example.football.data.room.FootballDB
 import com.example.football.data.room.dao.FootballLigsDao
 import com.example.football.data.room.dao.FootballMatchDayDao
+import com.example.football.data.room.dao.FootballMatchImmediateDao
 import com.example.football.data.room.dao.FootballTableUpdateDao
 import com.example.football.utils.Constants
 import com.example.football.utils.Constants.Companion.BASE_URL
@@ -63,12 +64,19 @@ object AppModule {
     fun provideLeagueDao(appDataBase: FootballDB): FootballLigsDao {
         return appDataBase.footballLigsDao()
     }
+
     @Provides
     fun provideMatchDayDao(appDataBase: FootballDB): FootballMatchDayDao {
         return appDataBase.footballMatchDayDao()
     }
+
     @Provides
     fun provideUpdateTimeDao(appDataBase: FootballDB): FootballTableUpdateDao {
         return appDataBase.footballUpadateTableDao()
+    }
+
+    @Provides
+    fun provideMatchImmediateDao(appDataBase: FootballDB): FootballMatchImmediateDao {
+        return appDataBase.footballMatchImmediateDao()
     }
 }

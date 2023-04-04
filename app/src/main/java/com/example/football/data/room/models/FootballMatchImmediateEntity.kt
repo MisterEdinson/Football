@@ -5,9 +5,9 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import kotlinx.android.parcel.Parcelize
 
-@Entity(tableName = "football_match_day")
+@Entity(tableName = "football_match_day_immediate")
 @Parcelize
-data class FootballMatchesDayEntity(
+data class FootballMatchImmediateEntity(
     @PrimaryKey(autoGenerate = true)
     var id: Int = 0,
     var idmatch: Int? = null,

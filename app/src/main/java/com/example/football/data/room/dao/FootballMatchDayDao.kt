@@ -8,7 +8,7 @@ interface FootballMatchDayDao {
     @Query("SELECT * FROM football_match_day ORDER BY id")
     suspend fun getMatchDay(): List<FootballMatchesDayEntity>
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun addMatchDay(competition: List<FootballMatchesDayEntity>)
 
     @Delete

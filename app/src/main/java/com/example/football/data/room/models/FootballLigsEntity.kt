@@ -9,16 +9,16 @@ import kotlinx.android.parcel.Parcelize
 @Parcelize
 data class FootballLigsEntity(
     @PrimaryKey(autoGenerate = true)
-    var id:Int = 0,
-    var idligue:Int? = null,
-    var idarea:Int? = null,
-    var areacode:String? = null,
-    var areaname:String? = null,
-    var name:String? = null,
-    var code:String? = null,
-    var type:String? = null,
-    var emblem:String? = null,
-    var currentmatchday:Int? = null,
-    var currentwinner:String? = null,
+    var id: Int = 0,
+    var idligue: Int? = null,
+    var idarea: Int? = null,
+    var areacode: String? = null,
+    var areaname: String? = null,
+    var name: String? = null,
+    var code: String? = null,
+    var type: String? = null,
+    var emblem: String? = null,
+    var currentmatchday: Int? = null,
+    var currentwinner: String? = null,
     var dateUpdate: Long?
 ) : Parcelable

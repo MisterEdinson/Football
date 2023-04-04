@@ -22,7 +22,10 @@ class MatchesAdapter : RecyclerView.Adapter<MatchesAdapter.MatchViewHolder>() {
 
     private val callback = object : DiffUtil.ItemCallback<FootballMatchesDayEntity>() {
 
-        override fun areItemsTheSame(oldItem: FootballMatchesDayEntity, newItem: FootballMatchesDayEntity): Boolean {
+        override fun areItemsTheSame(
+            oldItem: FootballMatchesDayEntity,
+            newItem: FootballMatchesDayEntity
+        ): Boolean {
             return oldItem.id == newItem.id
         }
 

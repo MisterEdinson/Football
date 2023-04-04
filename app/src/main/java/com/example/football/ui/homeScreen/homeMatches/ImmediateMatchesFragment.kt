@@ -1,7 +1,6 @@
 package com.example.football.ui.homeScreen.homeMatches
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,15 +12,14 @@ import com.example.football.R
 import com.example.football.ui.homeScreen.HomeViewModel
 import com.example.football.ui.homeScreen.SwipeNavigationMatches
 import com.example.football.ui.homeScreen.adapters.Matches10Adapter
-import com.example.football.utils.Resource
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_immediate_matches.*
 
 @AndroidEntryPoint
 class ImmediateMatchesFragment : Fragment() {
 
-    private lateinit var viewModel : HomeViewModel
-    private var match10Adapter : Matches10Adapter? = null
+    private lateinit var viewModel: HomeViewModel
+    private var match10Adapter: Matches10Adapter? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -35,48 +33,24 @@ class ImmediateMatchesFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         initAdapter()
         //      SWIPE
-        rvImmediateMatches.setOnTouchListener(object : SwipeNavigationMatches(view.context){
+        rvImmediateMatches.setOnTouchListener(object : SwipeNavigationMatches(view.context) {
             override fun onSwipeLeft() {
                 findNavController().popBackStack()
                 Toast.makeText(
                     context,
                     "Матчи на сегодня",
-                    Toast.LENGTH_SHORT)
+                    Toast.LENGTH_SHORT
+                )
                     .show()
             }
-//            override fun onSwipeRight() {
-//                findNavController().popBackStack()
-//                Toast.makeText(
-//                    context,
-//                    "Матчи на сегодня",
-//                    Toast.LENGTH_SHORT
-//                ).show()
-//            }
         })
-
         //      END SWIPE
         viewModel.match10LiveData.observe(viewLifecycleOwner) {
-            when (it) {
-                is Resource.Success -> {
-                    it.data.let {
-                        match10Adapter?.differ?.submitList(it?.matches)
-                    }
-                }
-                is Resource.Loading -> {
-                    it.data.let {
-                        Log.d("loading data", "$it")
-                    }
-                }
-                is Resource.Error -> {
-                    it.data.let {
-                        Log.e("check data", "Home fragment: error : $it")
-                    }
-                }
-            }
+            match10Adapter?.differ?.submitList(it)
         }
     }
 
-        private fun initAdapter() {
+    private fun initAdapter() {
         match10Adapter = Matches10Adapter()
         rvImmediateMatches.apply {
             adapter = match10Adapter

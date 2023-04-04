@@ -13,12 +13,10 @@ import coil.ImageLoader
 import coil.decode.SvgDecoder
 import coil.request.ImageRequest
 import com.example.football.R
-import com.example.football.data.host.model.CompetitionsItem
 import com.example.football.data.room.models.FootballLigsEntity
 import kotlinx.android.synthetic.main.item_lig_home.view.*
 
-class LigsAdapter()
-    : RecyclerView.Adapter<LigsAdapter.LigsViewHolder>() {
+class LigsAdapter() : RecyclerView.Adapter<LigsAdapter.LigsViewHolder>() {
 
     private val TYPE_SKIPPED_ITEM = 0
     private val TYPE_NORMAL_ITEM = 1

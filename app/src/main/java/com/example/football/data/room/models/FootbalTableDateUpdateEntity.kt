@@ -9,8 +9,8 @@ import kotlinx.android.parcel.Parcelize
 @Parcelize
 data class FootbalTableDateUpdateEntity(
     @PrimaryKey(autoGenerate = true)
-    var id:Int = 0,
-    var timeupdatematchday:Long? = null,
-    var timeupdatecompetition:Long? = null,
-    var timeupdatematchimmediate:Long? = null,
+    var id: Int = 0,
+    var timeupdatematchday: Long? = null,
+    var timeupdatecompetition: Long? = null,
+    var timeupdatematchimmediate: Long? = null,
 ) : Parcelable

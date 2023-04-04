@@ -6,10 +6,10 @@ import com.example.football.data.room.models.FootballMatchesDayEntity
 import retrofit2.Response
 
 class ReceivingDataMatchUseCase {
-    fun receivingMatchesApi(response: Response<GeneralMatches>) : List<FootballMatchesDayEntity>{
+    fun receivingMatchesApi(response: Response<GeneralMatches>): List<FootballMatchesDayEntity> {
         val matches: List<MatchesItem?>? = response.body()?.matches
         val mapper = MapperMatchesUseCase()
-        val footballMatchEntities : List<FootballMatchesDayEntity> = matches?.mapNotNull { match ->
+        val footballMatchEntities: List<FootballMatchesDayEntity> = matches?.mapNotNull { match ->
             match?.let { mapper.mapFromMatchesEntity(match) }
         } ?: emptyList()
         return footballMatchEntities
