@@ -11,7 +11,7 @@ import coil.ImageLoader
 import coil.decode.SvgDecoder
 import coil.request.ImageRequest
 import com.example.football.R
-import com.example.football.data.host.matches.MatchesItem
+import com.example.football.data.room.models.FootballMatchesDayEntity
 import kotlinx.android.synthetic.main.item_match_home.view.*
 import java.time.OffsetDateTime
 import java.time.format.DateTimeFormatter
@@ -20,15 +20,15 @@ class MatchesAdapter : RecyclerView.Adapter<MatchesAdapter.MatchViewHolder>() {
 
     class MatchViewHolder(view: View) : RecyclerView.ViewHolder(view)
 
-    private val callback = object : DiffUtil.ItemCallback<MatchesItem>() {
+    private val callback = object : DiffUtil.ItemCallback<FootballMatchesDayEntity>() {
 
-        override fun areItemsTheSame(oldItem: MatchesItem, newItem: MatchesItem): Boolean {
+        override fun areItemsTheSame(oldItem: FootballMatchesDayEntity, newItem: FootballMatchesDayEntity): Boolean {
             return oldItem.id == newItem.id
         }
 
         override fun areContentsTheSame(
-            oldItem: MatchesItem,
-            newItem: MatchesItem
+            oldItem: FootballMatchesDayEntity,
+            newItem: FootballMatchesDayEntity
         ): Boolean {
             return oldItem == newItem
         }
@@ -45,19 +45,19 @@ class MatchesAdapter : RecyclerView.Adapter<MatchesAdapter.MatchViewHolder>() {
     override fun onBindViewHolder(holder: MatchViewHolder, position: Int) {
         val item = differ.currentList[position]
         holder.itemView.apply {
-            item.homeTeam?.crest?.let { homeGame.loadImage(it) }
-            tvHomer.text = item.homeTeam?.shortName
-            tvAwey.text = item.awayTeam?.shortName
-            item.awayTeam?.crest?.let { awayGame.loadImage(it) }
+            item.hometeamcrest?.let { homeGame.loadImage(it) }
+            tvHomer.text = item.hometeamshort
+            tvAwey.text = item.awayteamshort
+            item.awayteamcrest?.let { awayGame.loadImage(it) }
             if (item.status == "TIMED") {
                 val inputText = DateTimeFormatter.ofPattern("HH:mm")
-                val date = item.utcDate
+                val date = item.utcdate
                 val dateTime = OffsetDateTime.parse(date)
                 val time = dateTime.format(inputText)
                 tvResultTime.text = time.toString()
             } else {
                 tvResult.text = "Live"
-                tvResultTime.text = "${item.score?.fullTime?.home}-${item.score?.fullTime?.away}"
+                tvResultTime.text = "${item.scorefulltimehome}-${item.scorefulltimeaway}"
             }
         }
     }

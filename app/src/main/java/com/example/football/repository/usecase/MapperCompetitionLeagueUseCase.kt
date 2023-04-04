@@ -2,12 +2,12 @@ package com.example.football.repository.usecase
 
 import com.example.football.data.host.model.CompetitionsItem
 import com.example.football.data.room.models.FootballLigsEntity
-import com.example.football.data.util.Mapper
+import com.example.football.data.util.MapperCompetitions
 import java.util.*
 
-class MapperUseCase : Mapper<CompetitionsItem, FootballLigsEntity> {
+class MapperCompetitionLeagueUseCase : MapperCompetitions<CompetitionsItem, FootballLigsEntity> {
 
-    override fun mapFromEntity(entity: CompetitionsItem?): FootballLigsEntity {
+    override fun mapFromFootballCompetitionsEntity(entity: CompetitionsItem?): FootballLigsEntity {
         return FootballLigsEntity(
             id = 0,
             idarea = entity?.area?.id,

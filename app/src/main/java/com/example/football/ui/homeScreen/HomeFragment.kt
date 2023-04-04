@@ -1,17 +1,13 @@
 package com.example.football.ui.homeScreen
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
-import com.example.football.data.room.models.FootballLigsEntity
 import com.example.football.databinding.FragmentHomeBinding
 import com.example.football.ui.homeScreen.adapters.LigsAdapter
-import com.example.football.utils.Resource
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_home.*
 

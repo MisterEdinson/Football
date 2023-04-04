@@ -8,9 +8,9 @@ import retrofit2.Response
 class ReceivingDataCompetitionApiUseCase{
     fun receivingDataApi(response: Response<General>) : List<FootballLigsEntity>{
         val competitions: List<CompetitionsItem?>? = response.body()?.competitions
-        val mapper = MapperUseCase()
+        val mapper = MapperCompetitionLeagueUseCase()
         val footballLigsEntities: List<FootballLigsEntity> = competitions?.mapNotNull { competition ->
-            competition?.let { mapper.mapFromEntity(it) }
+            competition?.let { mapper.mapFromFootballCompetitionsEntity(it) }
         } ?: emptyList()
         return footballLigsEntities
     }
