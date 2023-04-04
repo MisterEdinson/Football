@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.room.Room
 import com.example.football.data.host.SimpleApi
 import com.example.football.data.room.FootballDB
+import com.example.football.data.room.dao.FootballLigsDao
 import com.example.football.utils.Constants
 import com.example.football.utils.Constants.Companion.BASE_URL
 import dagger.Module
@@ -50,15 +51,15 @@ object AppModule {
     @Provides
     @Singleton
 
-    fun provideGameLigDataBase(@ApplicationContext context: Context) =
+    fun provideArticleDataBase(@ApplicationContext context: Context) =
         Room.databaseBuilder(
             context,
             FootballDB::class.java,
-            "football_game_lig_data"
+            "football_database"
         ).build()
 
     @Provides
-    fun provideFootballDao(footballdatabase: FootballDB): FootballLigsDao {
-        return footballdatabase.footballDao()
+    fun provideLeagueDao(appDataBase: FootballDB): FootballLigsDao {
+        return appDataBase.footballLigsDao()
     }
 }

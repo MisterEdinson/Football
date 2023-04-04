@@ -1,5 +1,6 @@
 package com.example.football.data.room.models
 
+import android.os.Parcelable
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import kotlinx.android.parcel.Parcelize
@@ -32,4 +33,4 @@ data class FootballMatchDayEntity(
     var areaname:String? = null,
     var areacode:String? = null,
     var areaflag:String? = null
-)
+): Parcelable
