@@ -20,5 +20,5 @@ data class FootballLigsEntity(
     var emblem: String? = null,
     var currentmatchday: Int? = null,
     var currentwinner: String? = null,
-    var dateUpdate: Long?
+    var dateUpdate: Long?,
 ) : Parcelable

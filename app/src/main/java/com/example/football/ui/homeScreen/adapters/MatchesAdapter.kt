@@ -1,5 +1,6 @@
 package com.example.football.ui.homeScreen.adapters
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,9 +13,11 @@ import coil.decode.SvgDecoder
 import coil.request.ImageRequest
 import com.example.football.R
 import com.example.football.data.room.models.FootballMatchesDayEntity
+import com.example.football.data.util.DateFormatConverter
 import kotlinx.android.synthetic.main.item_match_home.view.*
 import java.time.OffsetDateTime
 import java.time.format.DateTimeFormatter
+import java.util.*
 
 class MatchesAdapter : RecyclerView.Adapter<MatchesAdapter.MatchViewHolder>() {
 
@@ -53,11 +56,9 @@ class MatchesAdapter : RecyclerView.Adapter<MatchesAdapter.MatchViewHolder>() {
             tvAwey.text = item.awayteamshort
             item.awayteamcrest?.let { awayGame.loadImage(it) }
             if (item.status == "TIMED") {
-                val inputText = DateTimeFormatter.ofPattern("HH:mm")
                 val date = item.utcdate
-                val dateTime = OffsetDateTime.parse(date)
-                val time = dateTime.format(inputText)
-                tvResultTime.text = time.toString()
+                val time = DateFormatConverter().dateConverter(date)
+                tvResultTime.text = time
             } else {
                 tvResult.text = "Live"
                 tvResultTime.text = "${item.scorefulltimehome}-${item.scorefulltimeaway}"

@@ -1,16 +1,24 @@
 package com.example.football.data.room.dao
 
-import androidx.room.Dao
-import androidx.room.Query
+import androidx.room.*
+import com.example.football.data.room.models.FootbalTableDateUpdateEntity
+import com.example.football.data.room.models.FootballMatchImmediateEntity
 
 @Dao
 interface FootballTableUpdateDao {
-    @Query("UPDATE football_table_update SET timeupdatecompetition = :date WHERE id = 0")
-    suspend fun updateCompetitions(date: Long)
 
-    @Query("UPDATE football_table_update SET timeupdatematchday = :date WHERE id = 2")
-    suspend fun updateMatchDay(date: Long)
+    @Query("SELECT * FROM football_table_update")
+    suspend fun getTime(): FootbalTableDateUpdateEntity
 
-    @Query("UPDATE football_table_update SET timeupdatematchimmediate = :date WHERE id = 2")
-    suspend fun updateMatchImmediateDay(date: Long)
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    suspend fun addTime(competition: FootbalTableDateUpdateEntity)
+
+    @Update
+    suspend fun updateComp(date : FootbalTableDateUpdateEntity)
+
+    @Delete
+    suspend fun deleteTime(competition: FootbalTableDateUpdateEntity)
+
+    @Query("DELETE FROM football_table_update")
+    suspend fun deleteAllTime()
 }

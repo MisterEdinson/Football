@@ -1,5 +1,6 @@
 package com.example.football.repository
 
+import android.util.Log
 import com.example.football.data.host.SimpleApi
 import com.example.football.data.host.table.GeneralTable
 import com.example.football.data.host.team.TeamGeneral
@@ -10,6 +11,7 @@ import com.example.football.data.room.dao.FootballTableUpdateDao
 import com.example.football.data.room.models.FootballLigsEntity
 import com.example.football.data.room.models.FootballMatchImmediateEntity
 import com.example.football.data.room.models.FootballMatchesDayEntity
+import com.example.football.data.util.TimeHandling
 import com.example.football.repository.usecase.ReceivingDataCompetitionApiUseCase
 import com.example.football.repository.usecase.ReceivingDataMatchImmediateUseCase
 import com.example.football.repository.usecase.ReceivingDataMatchUseCase
@@ -25,7 +27,6 @@ class Repository @Inject constructor(
     private val footballMatchImmediateDao: FootballMatchImmediateDao,
 ) {
 
-    var today = Date().time // time in seconds
 
     suspend fun getCompetition(): List<FootballLigsEntity> {
         //receiving data API and conversion
@@ -36,7 +37,6 @@ class Repository @Inject constructor(
                 val competitions =
                     ReceivingDataCompetitionApiUseCase().receivingDataApi(simpleApi.getCompetition())
                 footballLeagueDao.addCompetitionLeague(competitions)
-                footballTimeUpdate.updateCompetitions(today)
                 return footballLeagueDao.getCompetitionLeague()
             }
             else -> {
@@ -53,7 +53,7 @@ class Repository @Inject constructor(
                 val matchDay =
                     ReceivingDataMatchUseCase().receivingMatchesApi(simpleApi.getMatchDay())
                 footballMatchDayDao.addMatchDay(matchDay)
-                footballTimeUpdate.updateMatchDay(today)
+                //footballTimeUpdate.timeupdatematchday(22222222222222,1)
                 return footballMatchDayDao.getMatchDay()
             }
             else -> {
@@ -77,7 +77,7 @@ class Repository @Inject constructor(
                     )
                 )
                 footballMatchImmediateDao.addMatchImmediate(matchDay)
-                footballTimeUpdate.updateMatchDay(today)
+                //footballTimeUpdate.timeupdatematchimmediate(333333333333,1)
                 return footballMatchImmediateDao.getMatchImmediate()
             }
             else -> {
